@@ -1,0 +1,43 @@
+<div class="col-md-12 no-padd">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar>
+            <i class="fa fa-user-circle fa-2x"></i>
+          </div>
+          <mat-card-title>
+            My Account
+          </mat-card-title>
+          <mat-card-subtitle>Change notification details</mat-card-subtitle>
+        </mat-card-header>
+        <hr/>
+        <mat-card-content>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input [(ngModel)]="email"
+                     matInput
+                     placeholder="email here"/>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone No</mat-label>
+              <input [(ngModel)]="phoneNo"
+                     matInput
+                     placeholder="phone no here"/>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button mat-raised-button
+                  [disabled]="!hasFieldsChanged"
+                  (click)="postUser()">
+            Save
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

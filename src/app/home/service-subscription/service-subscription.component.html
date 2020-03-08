@@ -1,0 +1,35 @@
+<div class="col-md-12 no-padd">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar>
+            <i class="fa fa-diamond fa-2x"></i>
+          </div>
+          <mat-card-title>
+            Available Services
+          </mat-card-title>
+          <mat-card-subtitle>All services</mat-card-subtitle>
+        </mat-card-header>
+        <hr/>
+        <mat-card-content>
+          <div *ngFor="let channel of serviceSubscriptions; let i = $index">
+            <mat-checkbox
+              (click)="insertServices(channel)"
+              [checked]="channel.subscribed"
+              [disabled]="channel.subscribed">
+              <mat-label>{{channel.serviceName}} - {{channel.price | currency: 'INR'}}</mat-label>
+            </mat-checkbox>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button mat-raised-button
+                  [disabled]="!newServices?.length"
+                  (click)="subsNewServices()">
+            Subscribe
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="col-md-12 no-padd">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" routerLink="./subscription-pack">Subscription packs</a>
+          <a class="nav-item nav-link" routerLink="./channel-subscription">Channel Subscriptions</a>
+          <a class="nav-item nav-link" routerLink="./service-subscription">Service Subscriptions</a>
+          <a class="nav-item nav-link" routerLink="./my-account">My Account</a>
+          <a class="nav-item nav-link" routerLink="./recharge">Recharge</a>
+          <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="mt-4 col-md-12 no-padd">
+    <div class="row">
+      <div class="col-md-8">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar>
+              <i class="fa fa-user-circle fa-2x"></i>
+            </div>
+            <mat-card-title>
+              Hi {{user?.firstName}},
+              <span *ngIf="currentSubsPck?.channelSubscriptionPacks?.length">
+              You are subscribed to {{currentSubsName}}
+            </span>
+            </mat-card-title>
+          </mat-card-header>
+          <hr/>
+          <mat-card-content>
+            <div *ngIf="!!currentSubsPck?.channelSubscriptions?.length">
+              <h6> Additional subscribed channels</h6>
+              <div *ngFor="let channel of currentSubsPck?.channelSubscriptions; let i = $index">
+                <p>{{channel.channel.channelName}}</p>
+              </div>
+            </div>
+            <div *ngIf="!!currentSubsPck?.serviceSubscriptions?.length">
+              <h6> Services you subscribed</h6>
+              <div *ngFor="let service of currentSubsPck?.serviceSubscriptions; let i = $index">
+                <p>{{service.service.serviceName}}</p>
+              </div>
+
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar>
+              <i class="fa fa-user-circle fa-2x"></i>
+            </div>
+            <mat-card-title>
+              {{user?.firstName + ' '}} {{user?.lastName}}
+            </mat-card-title>
+          </mat-card-header>
+          <hr/>
+          <mat-card-content>
+            <h6>You are current balance is {{user?.balance}}</h6>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
